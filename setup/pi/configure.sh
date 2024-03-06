@@ -86,6 +86,25 @@ function install_prebuilt_rsync {
   fi
 }
 
+function check_immich {
+  if which node > /dev/null
+    then
+        echo "node is installed, skipping..."
+    else
+  log_progress "installing nodejs"
+      apt install -y nodejs
+    fi
+  if which npm > /dev/null
+    then
+        echo "npm is installed, skipping..."
+    else
+      log_progress "installing npm"
+      apt install -y npm
+    fi
+  
+  npm list -g | grep @immich/cli || npm install -g @immich/cli
+}
+
 function check_rsync {
   if check_default_rsync
   then
@@ -114,6 +133,9 @@ function check_archive_configs () {
     log_progress "Checking archive configs: "
 
     case "$ARCHIVE_SYSTEM" in
+        immich)
+            check_immich
+            ;;
         rsync)
             check_variable "RSYNC_USER"
             check_variable "RSYNC_SERVER"
