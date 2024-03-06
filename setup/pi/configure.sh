@@ -150,6 +150,9 @@ function check_archive_configs () {
 function get_archive_module () {
 
     case "$ARCHIVE_SYSTEM" in
+        immich)
+            echo "run/immich_archive"
+            ;;
         rsync)
             echo "run/rsync_archive"
             ;;
