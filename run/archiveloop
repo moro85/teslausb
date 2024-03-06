@@ -118,7 +118,7 @@ function connect_usb_drives_to_host() {
 }
 
 function wait_for_archive_to_be_reachable () {
-  log "Waiting for archive to be reachable..."
+  log "Waiting for archive to be reachable...$ARCHIVE_SERVER"
   while true
   do
     if archive_is_reachable
