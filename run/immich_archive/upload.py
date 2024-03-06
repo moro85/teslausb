@@ -39,5 +39,7 @@ f = open(sys.argv[1], "r")
 files = f.readlines() 
 
 for filename in files:
+    fullpath = sys.argv[2] + "/" + filename.strip()
     if filename.strip().endswith(".mp4"):
-        upload(sys.argv[2] + "/" + filename.strip())
+        upload(fullpath)
+        os.remove(fullpath)
