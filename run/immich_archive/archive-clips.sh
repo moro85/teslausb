@@ -2,6 +2,7 @@
 
 while [ -n "${1+x}" ]
 do
-  ./upload.py "$2" "$1" >> /tmp/archive-error.log
+  echo "$2" "$1" "$LOG_FILE"
+  ./upload.py "$2" "$1" >> "$LOG_FILE" 2>&1
   shift 2
 done
