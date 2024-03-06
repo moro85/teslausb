@@ -36,9 +36,8 @@ def upload(file):
 
 
 f = open(sys.argv[1], "r")
-files = f.readlines()
- 
+files = f.readlines() 
+
 for filename in files:
-    if filename.endswith(".mp4"):
-        upload(sys.argv[2] + '/' + filename)
-        
+    if filename.strip().endswith(".mp4"):
+        upload(sys.argv[2] + "/" + filename.strip())
