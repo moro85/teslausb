@@ -258,6 +258,10 @@ function install_archive_scripts () {
   then
     copy_script "$archive_module"/copy-music.sh "$install_path"
   fi
+  if grep immich <<< "$archive_module"
+  then
+    copy_script "$archive_module"/upload.py "$install_path"
+  fi
 }
 
 function install_python3_pip () {
