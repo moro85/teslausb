@@ -2,6 +2,7 @@
 
 import requests
 import os
+import sys
 from datetime import datetime
 
 API_KEY = os.environ["IMMICH_API_KEY"]               # replace with a valid api key
@@ -38,5 +39,6 @@ f = open(sys.argv[1], "r")
 files = f.readlines()
  
 for filename in files:
-    upload(sys.argv[2] + filename)
-    
+    if filename.endswith(".mp4"):
+        upload(sys.argv[2] + '/' + filename)
+        
